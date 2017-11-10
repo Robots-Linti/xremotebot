@@ -66,8 +66,12 @@ class Global(Entity):
 
         raise nofreerobots
 
-    def reserve(self, wshandler, model, id_,time):
+    def reserve(self, wshandler, model, id_):
+        if not public_server:
+            return {'robot_model': model, 'robot_id': id_}
+        
         reservation = Reservation.reserve(
+            wshandler.current_user,
             robot_id=id_,
             robot_model=model,
             time=time

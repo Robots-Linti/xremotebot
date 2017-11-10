@@ -1,4 +1,4 @@
-from utilconfig import days, hours, random_secret
+from utilconfig import days, hours, minutes, seconds, random_secret
 import os.path
 
 settings = {
@@ -19,7 +19,7 @@ public_server = False
 api_key_expiration = days(700)
 reservation_expiration = seconds(60)
 robots = {
-    'n6': [9]
+    'n6': [1, 6]
 }
 
 # STREAMING
@@ -27,16 +27,9 @@ disable_streaming = False
 camera_device = '/dev/video0'
 framerate = '30'
 resolution = '352x288'
-use_embed_streaming = False
-embed_streaming = '''<iframe width="360" height="302"
-src="http://www.ustream.tv/embed/20521415?v=3&amp;wmode=direct&autoplay=true&quality=low&showtitle=false"
-scrolling="no" frameborder="0" style="border: 0px none transparent;">
-</iframe>
-<br /><a href="http://www.ustream.tv"
-style="font-size: 12px; line-height: 20px; font-weight: normal; text-align: left;"
-target="_blank">Broadcast live streaming video on Ustream</a>'''
-#embed_streaming = '''<iframe width="420" height="315" src="http://www.youtube.com/embed/lShoVjW3rz0"
-# frameborder="0" allowfullscreen></iframe>'''
-hostname = '190.16.204.135' # 'xremotebot.example'
+use_embed_streaming = True
+# embed_streaming = '''<iframe width="1280" height="720" src="https://www.youtube.com/embed/rSJxeVlWI0c?autoplay=1" frameborder="0" gesture="media" allowfullscreen></iframe><br/><a href="https://www.youtube.com/channel/UC55u3yo0q8uJsqJJlhWQD0g/live">Ver en YouTube</a>'''
+embed_streaming = '''<iframe width="1280" height="720" src="https://www.youtube.com/embed/live_stream?channel=UC55u3yo0q8uJsqJJlhWQD0g&autoplay=1" frameborder="0" gesture="media" allowfullscreen></iframe><br/><a href="https://www.youtube.com/channel/UC55u3yo0q8uJsqJJlhWQD0g/live">Ver en YouTube</a>'''
+hostname = '163.10.20.156' # 'xremotebot.example'
 video_ws_port = 8084
 video_ws = 'ws://{}:{}/'.format(hostname, video_ws_port)

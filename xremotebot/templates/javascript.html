@@ -2,6 +2,25 @@
 {% extends main.html %}
 
 {% block body %}
+{% if disable_streaming %}
+          <img class="center-block" id="videoCanvas" width="640" height="480"
+          src="/img/camera_disabled.svg">
+{% else %}
+    {% if use_embed_streaming %}
+        <div class="center-block">
+            {% raw embed_streaming %}
+        </div>
+    {% else %}
+          <canvas class="center-block" id="videoCanvas" width="640" height="480">
+              <p>
+              Su navegador no soporta el elemento Canvas, pruebe con:
+              <a href="http://www.google.com/chrome">Chrome</a>,
+              <a href="http://www.mozilla.com/firefox/">Firefox</a>,
+              <a href="http://www.apple.com/safari/">Safari</a> o Internet Explorer 10
+              </p>
+          </canvas>
+    {% end %}
+{% end %}
 <div class="row">
       <div class="col-md-8">
           <textarea id="codebox" class="halo">
@@ -36,28 +55,9 @@
           </div>
       </div>
       <div class="col-md-4">
-{% if disable_streaming %}
-          <img class="center-block" id="videoCanvas" width="640" height="480"
-          src="/img/camera_disabled.svg">
-{% else %}
-    {% if use_embed_streaming %}
-        <div class="center-block">
-            {% raw embed_streaming %}
-        </div>
-    {% else %}
-          <canvas class="center-block" id="videoCanvas" width="640" height="480">
-              <p>
-              Su navegador no soporta el elemento Canvas, pruebe con:
-              <a href="http://www.google.com/chrome">Chrome</a>,
-              <a href="http://www.mozilla.com/firefox/">Firefox</a>,
-              <a href="http://www.apple.com/safari/">Safari</a> o Internet Explorer 10
-              </p>
-          </canvas>
-    {% end %}
-{% end %}
           <div class="checkbox">
               <label>
-                  <input id="enable-rblog" type="checkbox" checked="checked"> Habilitar modo debug
+                  <input id="enable-rblog" type="checkbox" checked> Habilitar modo debug
               </label>
           </div>
           <div id="tips" class="alert alert-info" role="alert">

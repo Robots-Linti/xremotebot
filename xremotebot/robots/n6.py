@@ -10,7 +10,7 @@ class Robot(abcs.Robot):
 
     def __init__(self, id_):
         if Robot.board is None:
-            Robot.board = duinobot.Board()
+            Robot.board = duinobot.Board('/dev/ttyUSB1')
         self.id = int(id_)
         self.robot = duinobot.Robot(Robot.board, self.id)
         logger.debug('n6 with id=%d created', self.id)
